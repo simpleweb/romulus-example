@@ -1,7 +1,4 @@
-/** @format */
+import { AppRegistry } from 'react-native';
+import Romulus from 'Romulus/App/Romulus';
 
-import {AppRegistry} from 'react-native';
-import App from './App';
-import {name as appName} from './app.json';
-
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent('Romulus', () => Romulus);

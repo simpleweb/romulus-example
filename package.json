@@ -4,19 +4,65 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest --verbose",
+    "pretty": "prettier --config ./node_modules/@simpleweb/configs/.prettierrc --write './App/**/*.js'",
+    "lint": "eslint --config ./node_modules/@simpleweb/configs/react-native/.eslintrc --fix './App/**/*.js'",
+    "updateignore": "./bin/gitignore.sh",
+    "bump": "./bin/bump-ios.sh",
+    "coverage": "jest --coverage",
+    "test:watch": "npm test -- --watch",
+    "pretest": "yarn run lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "16.6.1",
-    "react-native": "0.57.7"
+    "react-native": "0.57.7",
+    "react-native-config": "^0.11.7",
+    "react-native-gesture-handler": "^1.0.10",
+    "react-native-iphone-x-helper": "^1.2.0",
+    "react-navigation": "^3.0.7",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-action-buffer": "^1.2.0",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
+    "redux-saga": "^0.16.2",
+    "styled-components": "^4.1.2"
   },
   "devDependencies": {
+    "@simpleweb/configs": "https://github.com/simpleweb/configs.git#0.0.2",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "23.6.0",
-    "jest": "23.6.0",
+    "eslint": "^5.10.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-xo": "^0.25.1",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-native": "^3.5.0",
+    "flow-bin": "0.78.0",
+    "husky": "^1.2.0",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
     "metro-react-native-babel-preset": "0.50.0",
+    "prettier": "^1.15.3",
     "react-test-renderer": "16.6.1"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "Romulus@0.0.1",
+  "lint-staged": {
+    "App/**/*.js": [
+      "yarn run pretty",
+      "yarn run lint",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
